@@ -2,14 +2,10 @@ package net.hibernate;
 
 import java.io.File;
 import java.util.List;
-import java.util.Scanner;
-
-import javax.swing.*;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import net.hibernate.dao.VideogameDAO;
 import net.hibernate.entity.Videogame;
 import net.hibernate.util.HibernateUtil;
 
