@@ -5,6 +5,7 @@ import java.util.Objects;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Version;
 
 @Entity
 public class Videogame 
@@ -14,15 +15,17 @@ public class Videogame
 	private String title;
 	private String platform;
 	private Rating rating;
-	private boolean isCollection;
-	private boolean isRomhack;
-	private boolean isFavourite;
+	private Boolean isCollection;
+	private Boolean isRomhack;
+	private Boolean isFavourite;
+	@Version
+    private Long version;
 	
 	public Videogame() {
 		
 	}
 	
-	public Videogame(String title, String platform, Rating rating, boolean isCollection, boolean isRomhack, boolean isFavourite) {
+	public Videogame(String title, String platform, Rating rating, Boolean isCollection, Boolean isRomhack, Boolean isFavourite) {
 		if(title.length() > 200) {
 			throw new IllegalArgumentException("Field 'Title' cannot be longer than 200 characters.");
 		}
