@@ -1,17 +1,16 @@
 package api.rest_videogames;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import jakarta.persistence.OptimisticLockException;
 
 @Configuration
 class LoadDatabase {
@@ -20,7 +19,9 @@ class LoadDatabase {
 
   @Bean
   CommandLineRunner initDatabase(VideogameRepository repository) {
-	  ArrayList<Videogame> list = retrieveVideogames(new File("games.csv"));
+	  String url = String.format("jdbc:mysql://localhost:3306/played");
+	  Connection conn = Common.connectionSQL(url,"hibernate","123");
+	  ArrayList<Videogame> list = retrieveVideogames(conn);
 	  return args -> {
 		  for(Videogame videogame : list) {
 			  log.info("Preloading " + repository.save(videogame));
@@ -28,29 +29,24 @@ class LoadDatabase {
 	  };
   }
   
-  public static ArrayList<Videogame> retrieveVideogames(File file){
+  public static ArrayList<Videogame> retrieveVideogames(Connection conn){
 		ArrayList<Videogame> videogames = new ArrayList<Videogame>();
-		try {
-			Scanner reader = new Scanner(file);
-			while(reader.hasNextLine()) {
-				String[] data = reader.nextLine().split(";");
-				try {
-					
-				}catch(IllegalArgumentException e) {
-					System.out.printf("\u001B[31mERROR: %s\u001B[37m\n",e.getMessage());
+		try(PreparedStatement stmt = conn.prepareStatement("SELECT * FROM videogame");
+				ResultSet rs = stmt.executeQuery()){
+			while(rs.next()) {
+				Videogame videogame = new Videogame(
+						rs.getString("title"),
+						rs.getString("platform"),
+						Rating.values()[rs.getInt("rating")],
+						rs.getInt("isCollection") == 1 ? true : false,
+						rs.getInt("isRomhack") == 1 ? true : false,
+						rs.getInt("isFavourite") == 1 ? true : false);
+				if(videogame != null) {
+					videogames.add(videogame);
 				}
-				Videogame created = new Videogame(
-						data[0],
-						data[1],
-						Rating.valueOf(data[2].toUpperCase()),
-						Boolean.parseBoolean(data[3].toLowerCase()),
-						Boolean.parseBoolean(data[4].toLowerCase()),
-						Boolean.parseBoolean(data[5].toLowerCase()));
-				videogames.add(created);
 			}
-			reader.close();
-		} catch (FileNotFoundException e) {
-			System.out.println("\u001B[31mERROR: File not Found Exception\u001B[37m");
+		}catch(SQLException e) {
+			System.out.println("\u001B[31mERROR: " + e.getMessage() + "\u001B[37m");
 		}
 		return videogames;
 	}

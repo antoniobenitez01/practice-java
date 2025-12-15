@@ -33,9 +33,5 @@ public class Main
 			}
 			System.out.println(e.getMessage());
 		}
-		
-		System.out.println("\n\u001B[36m--- DEBUG: INITIALIZING FRONT END ...\n\u001B[37m");
-		Frontend front = new Frontend();
-		front.show();
 	}
 }
