@@ -11,7 +11,7 @@ public class Videogame
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Long id;
 	
 	@Column(name = "title")
 	private String title;
@@ -22,20 +22,20 @@ public class Videogame
 	@Column(name = "rating")
 	private Rating rating;
 	
-	@Column(name = "isCollection")
-	private boolean isCollection;
+	@Column(name = "is_collection")
+	private Boolean isCollection;
 	
-	@Column(name = "isRomhack")
-	private boolean isRomhack;
+	@Column(name = "is_romhack")
+	private Boolean isRomhack;
 	
-	@Column(name = "isFavourite")
-	private boolean isFavourite;
+	@Column(name = "is_favourite")
+	private Boolean isFavourite;
 	
 	public Videogame() {
 		
 	}
 	
-	public Videogame(String title, String platform, Rating rating, boolean isCollection, boolean isRomhack, boolean isFavourite) {
+	public Videogame(String title, String platform, Rating rating, Boolean isCollection, Boolean isRomhack, Boolean isFavourite) {
 		if(title.length() > 200) {
 			throw new IllegalArgumentException("Field 'Title' cannot be longer than 200 characters.");
 		}
@@ -50,7 +50,7 @@ public class Videogame
 		this.isFavourite = isFavourite;
 	}
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -84,27 +84,27 @@ public class Videogame
 		this.rating = rating;
 	}
 
-	public boolean isCollection() {
+	public Boolean isCollection() {
 		return isCollection;
 	}
 
-	public void setCollection(boolean isCollection) {
+	public void setCollection(Boolean isCollection) {
 		this.isCollection = isCollection;
 	}
 
-	public boolean isRomhack() {
+	public Boolean isRomhack() {
 		return isRomhack;
 	}
 
-	public void setRomhack(boolean isRomhack) {
+	public void setRomhack(Boolean isRomhack) {
 		this.isRomhack = isRomhack;
 	}
 
-	public boolean isFavourite() {
+	public Boolean isFavourite() {
 		return isFavourite;
 	}
 
-	public void setFavourite(boolean isFavourite) {
+	public void setFavourite(Boolean isFavourite) {
 		this.isFavourite = isFavourite;
 	}
 	
