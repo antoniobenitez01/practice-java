@@ -15,28 +15,27 @@ public class Videogame
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String title;
-	private String platform;
+	private Platform platform;
 	private Rating rating;
 	private Boolean isCollection;
-	private Boolean isRomhack;
+	private Boolean isFangame;
+	private Boolean isFlash;
 	private Boolean isFavourite;
 	
 	public Videogame() {
 		
 	}
 	
-	public Videogame(String title, String platform, Rating rating, Boolean isCollection, Boolean isRomhack, Boolean isFavourite) {
+	public Videogame(String title, Platform platform, Rating rating, Boolean isCollection, Boolean isFangame, Boolean isFlash, Boolean isFavourite) {
 		if(title.length() > 200) {
 			throw new IllegalArgumentException("Field 'Title' cannot be longer than 200 characters.");
-		}
-		if(platform.length() > 200) {
-			throw new IllegalArgumentException("Field 'Platform' cannot be longer than 200 characters.");
 		}
 		this.title = title;
 		this.platform = platform;
 		this.rating = rating;
 		this.isCollection = isCollection;
-		this.isRomhack = isRomhack;
+		this.isFangame = isFangame;
+		this.isFlash = isFlash;
 		this.isFavourite = isFavourite;
 	}
 	
@@ -59,14 +58,11 @@ public class Videogame
 		this.title = title;
 	}
 
-	public String getPlatform() {
+	public Platform getPlatform() {
 		return platform;
 	}
 
-	public void setPlatform(String platform) {
-		if(platform.length() > 200) {
-			throw new IllegalArgumentException("Field 'Platform' cannot be longer than 200 characters.");
-		}
+	public void setPlatform(Platform platform) {
 		this.platform = platform;
 	}
 
@@ -86,12 +82,20 @@ public class Videogame
 		this.isCollection = isCollection;
 	}
 
-	public Boolean isRomhack() {
-		return isRomhack;
+	public Boolean isFangame() {
+		return isFangame;
 	}
 
-	public void setRomhack(Boolean isRomhack) {
-		this.isRomhack = isRomhack;
+	public void setFangame(Boolean isFangame) {
+		this.isFangame = isFangame;
+	}
+	
+	public Boolean isFlash() {
+		return isFlash;
+	}
+
+	public void setFlash(Boolean isFlash) {
+		this.isFlash = isFlash;
 	}
 
 	public Boolean isFavourite() {
@@ -121,12 +125,15 @@ public class Videogame
 	
 	@Override
 	public String toString() {
-		String toString = String.format("%d.\t%s - Platform: %s - Rating: %s",this.id,this.title,this.platform,this.rating.name());
+		String toString = String.format("%d.\t%s - Platform: %s - Rating: %s",this.id,this.title,this.platform.name(),this.rating.name());
 		if(isCollection()) {
 			toString += "\t(Collection)";
 		}
-		if(isRomhack()) {
-			toString += "\t(Romhack)";
+		if(isFangame()) {
+			toString += "\t(Fangame)";
+		}
+		if(isFlash()) {
+			toString += "\t(Flash)";
 		}
 		if(isFavourite()) {
 			toString += "\t(★)";
@@ -135,12 +142,16 @@ public class Videogame
 	}
 	
 	public String toConsole() {
-		String toString = String.format("\u001B[33m%d.\t\u001B[37m%s \u001B[36m- Platform:\u001B[37m %s \u001B[36m- Rating:\u001B[37m %s",this.id,this.title,this.platform,this.rating.name());
+		String toString = String.format("\u001B[33m%d.\t\u001B[37m%s \u001B[36m- Platform:\u001B[37m %s \u001B[36m- Rating:\u001B[37m %s",
+				this.id,this.title,this.platform.name(),this.rating.name());
 		if(isCollection()) {
 			toString += "\u001B[32m\t(Collection)\u001B[37m";
 		}
-		if(isRomhack()) {
-			toString += "\u001B[35m\t(Romhack)\u001B[37m";
+		if(isFangame()) {
+			toString += "\u001B[35m\t(Fangame)\u001B[37m";
+		}
+		if(isFlash()) {
+			toString += "\u001B[31m\t(Flash)\u001B[37m";
 		}
 		if(isFavourite()) {
 			toString += "\u001B[33m\t(★)\u001B[37m";
@@ -149,9 +160,10 @@ public class Videogame
 	}
 	
 	public String[] toTable() {
-		return String.format("%d;%s;%s;%s;%s;%s;%s",this.id,this.title,this.platform,this.rating.name(),
+		return String.format("%d;%s;%s;%s;%s;%s;%s",this.id,this.title,this.platform.name(),this.rating.name(),
 				this.isCollection	? "X" : " ",
-				this.isRomhack		? "X" : " ",
+				this.isFangame		? "X" : " ",
+				this.isFlash		? "X" : " ",
 				this.isFavourite	? "★" : " ").split(";");
 	}
 }

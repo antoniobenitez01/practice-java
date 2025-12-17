@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import net.hibernate.entity.Platform;
 import net.hibernate.entity.Rating;
 import net.hibernate.entity.Videogame;
 
@@ -113,11 +114,12 @@ public class Common
 				}
 				Videogame created = new Videogame(
 						data[0],
-						data[1],
+						Platform.valueOf(data[1].toUpperCase()),
 						Rating.valueOf(data[2].toUpperCase()),
 						Boolean.parseBoolean(data[3].toLowerCase()),
 						Boolean.parseBoolean(data[4].toLowerCase()),
-						Boolean.parseBoolean(data[5].toLowerCase()));
+						Boolean.parseBoolean(data[5].toLowerCase()),
+						Boolean.parseBoolean(data[6].toLowerCase()));
 				videogames.add(created);
 			}
 			for(Videogame videogame : videogames) {

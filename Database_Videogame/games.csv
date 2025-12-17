@@ -1,29 +1,32 @@
-Sonic the Hedgehog;SEGA Mega Drive;Good;False;False;False
-Sonic the Hedgehog 2;SEGA Mega Drive;Great;False;False;False
-Sonic the Hedgehog 3;SEGA Mega Drive;Fantastic;False;False;False
-Sonic the Hedgehog & Knuckles;SEGA Mega Drive;Great;False;False;False
-Sonic the Hedgehog 3 & Knuckles;SEGA Mega Drive;Best;False;False;True
-Sonic the Hedgehog CD;SEGA CD;Best;False;False;True
-Sonic 3D Blast: Flickie's Island;SEGA Mega Drive;Great;False;False;False
-Sonic Adventure;PC;Great;False;False;False
-Sonic Adventure 2;PC;Good;False;False;False
-Sonic Heroes;PlayStation 2;Good;False;False;False
-Sonic Mega Collection Plus;PlayStation 2;Best;True;False;True
-Sonic Gems Collection;PlayStation 2;Fantastic;True;False;True
-Sonic Forces;PC;Great;False;False;False
-Sonic Frontiers;PC;Best;False;False;True
-Half-Life;PC;Good;False;False;False
-Half-Life: Source;PC;Good;False;False;False
-Half-Life: Deathmatch;PC;Good;False;False;False
-Half-Life 2;PC;Fantastic;False;False;False
-Half-Life 2: Deathmatch;PC;Okay;False;False;False
-Half-Life 2: Episode 1;PC;Good;False;False;False
-Half-Life 2: Episode 2;PC;Great;False;False;False
-Half-Life Alyx;PC;Good;False;False;False
-Counter-Strike;PC;Good;False;False;False
-Counter-Strike: Source;PC;Good;False;False;False
-Counter-Strike: Global Offensive;PC;Great;False;False;False
-Counter-Strike 2;PC;Horrible;False;False;False
-Portal;PC;Good;False;False;False
-Portal 2;PC;Best;False;False;True
-Team Fortress 2;PC;Best;False;False;True
+Sonic the Hedgehog;SEGA_MEGA_DRIVE;Good;False;False;False;False
+Sonic the Hedgehog 2;SEGA_MEGA_DRIVE;Great;False;False;False;False
+Sonic the Hedgehog 3;SEGA_MEGA_DRIVE;Fantastic;False;False;False;False
+Sonic the Hedgehog & Knuckles;SEGA_MEGA_DRIVE;Great;False;False;False;False
+Sonic the Hedgehog 3 & Knuckles;SEGA_MEGA_DRIVE;Best;False;False;False;True
+Sonic the Hedgehog CD;SEGA_CD;Best;False;False;False;True
+Sonic 3D Blast: Flickie's Island;SEGA_MEGA_DRIVE;Great;False;False;False;False
+Sonic Adventure;PC;Great;False;False;False;False
+Sonic Adventure 2;PC;Good;False;False;False;False
+Sonic Heroes;PLAYSTATION_2;Good;False;False;False;False
+Sonic Mega Collection Plus;PLAYSTATION_2;Best;True;False;False;True
+Sonic Gems Collection;PLAYSTATION_2;Fantastic;True;False;False;True
+Sonic Forces;PC;Great;False;False;False;False
+Sonic Frontiers;PC;Best;False;False;False;True
+Half-Life;PC;Good;False;False;False;False
+Half-Life: Source;PC;Good;False;False;False;False
+Half-Life: Deathmatch;PC;Good;False;False;False;False
+Half-Life 2;PC;Fantastic;False;False;False;False
+Half-Life 2: Deathmatch;PC;Okay;False;False;False;False
+Half-Life 2: Episode 1;PC;Good;False;False;False;False
+Half-Life 2: Episode 2;PC;Great;False;False;False;False
+Half-Life Alyx;PC;Good;False;False;False;False
+Counter-Strike;PC;Good;False;False;False;False
+Counter-Strike: Source;PC;Good;False;False;False;False
+Counter-Strike: Global Offensive;PC;Great;False;False;False;False
+Counter-Strike 2;PC;Horrible;False;False;False;False
+Portal;PC;Good;False;False;False;False
+Portal 2;PC;Best;False;False;False;True
+Team Fortress 2;PC;Best;False;False;False;True
+NUEVO JUEGO;PC;Best;False;False;False;True
+NUEVO JUEGO 2;PC;Best;False;False;False;True
+NUEVO JUEGO 3;PC;Best;False;False;False;True

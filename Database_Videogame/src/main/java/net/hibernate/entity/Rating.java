@@ -1,7 +1,7 @@
 package net.hibernate.entity;
 
 public enum Rating {
-	SHADOWREALM,
+	SHADOW_REALM,
 	HORRIBLE,
 	BAD,
 	OKAY,

@@ -1,4 +1,4 @@
-package api.rest_videogames;
+package restvideogames.restsql;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
