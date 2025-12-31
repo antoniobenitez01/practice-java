@@ -12,7 +12,7 @@ import jakarta.persistence.Version;
 public class Videogame 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 	private Platform platform;

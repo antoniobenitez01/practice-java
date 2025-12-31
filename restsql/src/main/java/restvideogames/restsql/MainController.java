@@ -1,6 +1,5 @@
 package restvideogames.restsql;
 
-import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -24,22 +22,15 @@ public class MainController {
 	private VideogameRepository videogameRepository;
 	
 	@PostMapping(path="/add")
-	public ResponseEntity<String> addNewVideogame(
-			@RequestParam String title,
-			@RequestParam Platform platform,
-			@RequestParam Rating rating,
-			@RequestParam Boolean isCollection,
-			@RequestParam Boolean isFangame,
-			@RequestParam Boolean isFlash,
-			@RequestParam Boolean isFavourite) {
+	public ResponseEntity<String> addNewVideogame(@RequestBody Videogame data) {
 		Videogame videogame = new Videogame();
-		videogame.setTitle(title);
-		videogame.setPlatform(platform);
-		videogame.setRating(rating);
-		videogame.setCollection(isCollection);
-		videogame.setFangame(isFangame);
-		videogame.setFlash(isFlash);
-		videogame.setFavourite(isFavourite);
+		videogame.setTitle(data.getTitle());
+		videogame.setPlatform(data.getPlatform());
+		videogame.setRating(data.getRating());
+		videogame.setCollection(data.isCollection());
+		videogame.setFangame(data.isFangame());
+		videogame.setFlash(data.isFlash());
+		videogame.setFavourite(data.isFavourite());
 		videogameRepository.save(videogame);
 		return ResponseEntity.ok("Added Successfully");
 	}
@@ -54,8 +45,8 @@ public class MainController {
 		return videogameRepository.findById(id);
 	}
 	
-	@PutMapping("/{id}")
-    public Videogame
+	@PutMapping("/update/{id}")
+    public ResponseEntity<String>
     updateDepartment(@RequestBody Videogame videogame,
                      @PathVariable("id") int id)
     {
@@ -81,7 +72,8 @@ public class MainController {
 		if(videogame.isFavourite() != null) {
 			toUpdate.setFavourite(videogame.isFavourite());
 		}
-		return videogameRepository.save(toUpdate);
+		videogameRepository.save(toUpdate);
+		return ResponseEntity.ok("Updated successfully");
     }
 	
 	// Delete operation
