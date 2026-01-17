@@ -99,36 +99,4 @@ public class Common
 		}while(flag == false);
 		return resultado;
 	}
-	
-	//RETRIEVE VIDEOGAMES - Returns a LIST of Videogame DATA retrieved from FILE
-	public static ArrayList<Videogame> retrieveVideogames(File file){
-		ArrayList<Videogame> videogames = new ArrayList<Videogame>();
-		try {
-			Scanner reader = new Scanner(file);
-			while(reader.hasNextLine()) {
-				String[] data = reader.nextLine().split(";");
-				try {
-					
-				}catch(IllegalArgumentException e) {
-					System.out.printf("\u001B[31mERROR: %s\u001B[37m\n",e.getMessage());
-				}
-				Videogame created = new Videogame(
-						data[0],
-						Platform.valueOf(data[1].toUpperCase()),
-						Rating.valueOf(data[2].toUpperCase()),
-						Boolean.parseBoolean(data[3].toLowerCase()),
-						Boolean.parseBoolean(data[4].toLowerCase()),
-						Boolean.parseBoolean(data[5].toLowerCase()),
-						Boolean.parseBoolean(data[6].toLowerCase()));
-				videogames.add(created);
-			}
-			for(Videogame videogame : videogames) {
-				System.out.println(videogame);
-			}
-			reader.close();
-		} catch (FileNotFoundException e) {
-			System.out.println("\u001B[31mERROR: File not Found Exception\u001B[37m");
-		}
-		return videogames;
-	}
 }

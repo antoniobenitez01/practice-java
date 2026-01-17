@@ -27,7 +27,9 @@ public class MainController {
 		videogame.setTitle(data.getTitle());
 		videogame.setPlatform(data.getPlatform());
 		videogame.setRating(data.getRating());
+		videogame.setGenres(data.getGenres());
 		videogame.setCollection(data.isCollection());
+		videogame.setRomhack(data.isRomhack());
 		videogame.setFangame(data.isFangame());
 		videogame.setFlash(data.isFlash());
 		videogame.setFavourite(data.isFavourite());
@@ -60,8 +62,14 @@ public class MainController {
 		if(videogame.getRating() != null) {
 			toUpdate.setRating(videogame.getRating());
 		}
+		if(videogame.getGenres() != null) {
+			toUpdate.setGenres(videogame.getGenres());
+		}
 		if(videogame.isCollection() != null) {
 			toUpdate.setCollection(videogame.isCollection());
+		}
+		if(videogame.isRomhack() != null) {
+			toUpdate.setRomhack(videogame.isRomhack());
 		}
 		if(videogame.isFangame() != null) {
 			toUpdate.setFangame(videogame.isFangame());

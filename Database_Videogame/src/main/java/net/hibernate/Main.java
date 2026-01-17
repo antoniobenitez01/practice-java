@@ -1,8 +1,5 @@
 package net.hibernate;
 
-import java.io.File;
-import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -15,17 +12,11 @@ public class Main
 	{
 		System.out.println("\u001B[32m\n=== VIDEOGAME DATABASE CONSOLE ===\n");
 		
-		System.out.println("\u001B[36m--- DEBUG: RETRIEVING OBJECTS FROM CSV FILE ...\n\u001B[37m");
-		List<Videogame> objectsVideogame = Common.retrieveVideogames(new File("games.csv"));
-		objectsVideogame.forEach(videogame -> System.out.println(videogame));
-		
 		System.out.println("\u001B[36m\n--- DEBUG: INSERTING VIDEOGAMES IN DATABASE ...\n\u001B[33m");
 		Transaction transaction = null;
 		try(Session session = HibernateUtil.getSessionFactory().openSession()){
 			transaction = session.beginTransaction();
-			for(Videogame videogame : objectsVideogame) {
-				session.persist(videogame);
-			}
+			session.persist(new Videogame());
 			transaction.commit();
 		}catch(Exception e) {
 			if(transaction != null) {

@@ -16,7 +16,9 @@ public class Videogame
 	private String title;
 	private Platform platform;
 	private Rating rating;
+	private String[] genres;
 	private Boolean isCollection;
+	private Boolean isRomhack;
 	private Boolean isFangame;
 	private Boolean isFlash;
 	private Boolean isFavourite;
@@ -25,13 +27,15 @@ public class Videogame
 		
 	}
 	
-	public Videogame(String title, Platform platform, Rating rating, Boolean isCollection, Boolean isFangame, Boolean isFlash, Boolean isFavourite) {
+	public Videogame(String title, Platform platform, Rating rating, String[] genres,
+			Boolean isCollection, Boolean isRomhack, Boolean isFangame, Boolean isFlash, Boolean isFavourite) {
 		if(title.length() > 200) {
 			throw new IllegalArgumentException("Field 'Title' cannot be longer than 200 characters.");
 		}
 		this.title = title;
 		this.platform = platform;
 		this.rating = rating;
+		this.genres = genres;
 		this.isCollection = isCollection;
 		this.isFangame = isFangame;
 		this.isFlash = isFlash;
@@ -72,6 +76,14 @@ public class Videogame
 	public void setRating(Rating rating) {
 		this.rating = rating;
 	}
+	
+	public String[] getGenres() {
+		return this.genres;
+	}
+	
+	public void setGenres(String[] genres) {
+		this.genres = genres;
+	}
 
 	public Boolean isCollection() {
 		return isCollection;
@@ -79,6 +91,14 @@ public class Videogame
 
 	public void setCollection(Boolean isCollection) {
 		this.isCollection = isCollection;
+	}
+	
+	public Boolean isRomhack() {
+		return isRomhack;
+	}
+
+	public void setRomhack(Boolean isRomhack) {
+		this.isRomhack = isRomhack;
 	}
 
 	public Boolean isFangame() {
@@ -122,6 +142,7 @@ public class Videogame
 		return Objects.equals(id, other.id);
 	}
 	
+	//TODO - Update
 	@Override
 	public String toString() {
 		String toString = String.format("%d.\t%s - Platform: %s - Rating: %s",this.id,this.title,this.platform.name(),this.rating.name());
@@ -140,6 +161,7 @@ public class Videogame
 		return toString;
 	}
 	
+	//TODO - Update
 	public String toConsole() {
 		String toString = String.format("\u001B[33m%d.\t\u001B[37m%s \u001B[36m- Platform:\u001B[37m %s \u001B[36m- Rating:\u001B[37m %s",
 				this.id,this.title,this.platform.name(),this.rating.name());
@@ -158,6 +180,7 @@ public class Videogame
 		return toString;
 	}
 	
+	//TODO - Update
 	public String[] toTable() {
 		return String.format("%d;%s;%s;%s;%s;%s;%s",this.id,this.title,this.platform.name(),this.rating.name(),
 				this.isCollection	? "X" : " ",
